@@ -6,7 +6,15 @@ gradlePlugin {
 	plugins {
 		create("migle-paper") {
 			id = "net.mcparkour.migle.migle-paper"
+			displayName = "MiglePaper"
+			description = "Paper plugin Gradle plugin"
 			implementationClass = "net.mcparkour.migle.MiglePaperPlugin"
 		}
 	}
+}
+
+pluginBundle {
+	website = "https://github.com/mcparkournet/migle"
+	vcsUrl = "https://github.com/mcparkournet/migle.git"
+	tags = listOf("paper")
 }
