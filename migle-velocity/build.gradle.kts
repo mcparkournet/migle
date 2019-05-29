@@ -2,6 +2,7 @@ dependencies {
 	compileOnly(project(":migle-core"))
 }
 
+@Suppress("UnstableApiUsage")
 gradlePlugin {
 	plugins {
 		create("migle-velocity") {
