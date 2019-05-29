@@ -1,5 +1,5 @@
 dependencies {
-	implementation(project(":migle-core"))
+	compileOnly(project(":migle-core"))
 }
 
 gradlePlugin {
@@ -17,4 +17,8 @@ pluginBundle {
 	website = "https://github.com/mcparkournet/migle"
 	vcsUrl = "https://github.com/mcparkournet/migle.git"
 	tags = listOf("velocity")
+}
+
+tasks.jar {
+	from(zipTree(project(":migle-core").tasks.jar.get().archiveFile.get().asFile))
 }

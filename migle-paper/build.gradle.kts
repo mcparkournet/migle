@@ -1,5 +1,6 @@
 dependencies {
-	implementation(project(":migle-core"))
+	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.9")
+	compileOnly(project(":migle-core"))
 }
 
 gradlePlugin {
@@ -17,4 +18,8 @@ pluginBundle {
 	website = "https://github.com/mcparkournet/migle"
 	vcsUrl = "https://github.com/mcparkournet/migle.git"
 	tags = listOf("paper")
+}
+
+tasks.jar {
+	from(zipTree(project(":migle-core").tasks.jar.get().archiveFile.get().asFile))
 }
