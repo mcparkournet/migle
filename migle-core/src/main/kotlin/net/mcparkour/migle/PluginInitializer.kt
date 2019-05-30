@@ -28,7 +28,6 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionContainer
 import org.gradle.api.tasks.TaskContainer
-import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withType
 import org.gradle.language.jvm.tasks.ProcessResources
@@ -65,6 +64,6 @@ class PluginInitializer(
 	}
 
 	private fun ExtensionContainer.initialize() {
-		create<MigleExtension>("migle$moduleName", attributes)
+		add("migle$moduleName", attributes)
 	}
 }
