@@ -28,9 +28,9 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionContainer
 import org.gradle.api.tasks.TaskContainer
-import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withType
 import org.gradle.language.jvm.tasks.ProcessResources
+import java.io.File
 
 class PluginInitializer(
 	project: Project,
@@ -56,14 +56,22 @@ class PluginInitializer(
 		description = project.description
 	}
 
+	private fun ExtensionContainer.initialize() {
+		add("migle$moduleName", attributes)
+	}
+
 	private fun TaskContainer.initialize() {
-		val generateFileTask = register<GenerateAttributesFileTask>("generate${moduleName}AttributesFile", fileName, attributes, mapper)
+		val generateFileTask = createGenerateAttributesFileTask()
 		withType<ProcessResources> {
 			from(generateFileTask)
 		}
 	}
 
-	private fun ExtensionContainer.initialize() {
-		add("migle$moduleName", attributes)
+	private fun TaskContainer.createGenerateAttributesFileTask() = register("generate${moduleName}AttributesFile") {
+		val file = File(temporaryDir, fileName)
+		outputs.file(file)
+		doLast {
+			mapper.writeValue(file, attributes)
+		}
 	}
 }
