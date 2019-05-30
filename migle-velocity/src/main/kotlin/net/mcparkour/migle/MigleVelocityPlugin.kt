@@ -25,7 +25,6 @@
 package net.mcparkour.migle
 
 import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.core.JsonFactory
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import net.mcparkour.migle.attribute.PluginAttributes
@@ -36,13 +35,11 @@ class MigleVelocityPlugin : MiglePlugin() {
 	override fun apply(project: Project) {
 		val attributes = PluginAttributes()
 		val mapper = createMapper()
-		PluginInitializer(project, attributes, "velocity-plugin.json", "Velocity", mapper)
+		PluginInitializer(project, attributes, mapper, "Velocity", "velocity-plugin.json")
 	}
 
-	private fun createMapper(): ObjectMapper {
-		val jsonFactory = JsonFactory()
-		return ObjectMapper(jsonFactory)
-			.registerKotlinModule()
-			.setSerializationInclusion(JsonInclude.Include.NON_NULL)
-	}
+	private fun createMapper() = ObjectMapper()
+		.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+		.registerKotlinModule()
 }
+

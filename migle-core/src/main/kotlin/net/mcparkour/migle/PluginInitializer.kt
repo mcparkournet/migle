@@ -35,9 +35,9 @@ import java.io.File
 class PluginInitializer(
 	project: Project,
 	private val attributes: ProjectAttributes,
-	private val fileName: String,
+	private val mapper: ObjectMapper,
 	private val moduleName: String,
-	private val mapper: ObjectMapper
+	private val fileName: String
 ) {
 
 	init {
