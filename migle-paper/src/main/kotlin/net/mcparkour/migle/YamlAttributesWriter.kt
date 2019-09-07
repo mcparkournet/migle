@@ -22,18 +22,23 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle.attribute
+package net.mcparkour.migle
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import java.io.File
+import java.io.Serializable
 
-enum class DefaultAttribute {
+class YamlAttributesWriter : AttributesWriter {
 
-	@JsonProperty("true")
-	TRUE,
-	@JsonProperty("false")
-	FALSE,
-	@JsonProperty("op")
-	OP,
-	@JsonProperty("not op")
-	NOT_OP
+	private val mapper = YAMLMapper()
+		.disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
+		.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+		.registerKotlinModule()
+
+	override fun write(file: File, attributes: Serializable) {
+		mapper.writeValue(file, attributes)
+	}
 }

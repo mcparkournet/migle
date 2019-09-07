@@ -22,17 +22,17 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle.attribute
+package net.mcparkour.migle
 
-import net.mcparkour.migle.ProjectAttributes
+import net.mcparkour.migle.attributes.VelocityAttributes
+import org.gradle.api.Project
 
-data class PluginAttributes(
-	var id: String? = null,
-	override var name: String? = null,
-	override var version: String? = null,
-	override var description: String? = null,
-	var url: String? = null,
-	var authors: List<String>? = null,
-	var dependencies: List<DependencyAttributes>? = null,
-	var main: String? = null
-) : ProjectAttributes
+class VelocityAttributesInitializer(private val project: Project) : AttributesInitializer<VelocityAttributes> {
+
+	override fun initialize(attributes: VelocityAttributes) {
+		attributes.id = project.name
+		attributes.name = project.name
+		attributes.version = project.version.toString()
+		attributes.description = project.description
+	}
+}

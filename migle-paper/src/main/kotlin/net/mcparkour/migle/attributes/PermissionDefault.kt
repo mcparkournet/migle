@@ -22,14 +22,18 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle.attribute
+package net.mcparkour.migle.attributes
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-enum class ApiVersionAttribute {
+enum class PermissionDefault {
 
-	@JsonProperty("1.13")
-	VERSION_1_13,
-	@JsonProperty("1.14")
-	VERSION_1_14
+	@JsonProperty("true")
+	TRUE,
+	@JsonProperty("false")
+	FALSE,
+	@JsonProperty("op")
+	OP,
+	@JsonProperty("not op")
+	NOT_OP
 }

@@ -24,16 +24,7 @@
 
 package net.mcparkour.migle
 
-import net.mcparkour.migle.attributes.Attributes
-import org.gradle.api.Plugin
-import org.gradle.api.Project
+interface AttributesInitializer<T> {
 
-abstract class MiglePlugin<T : Attributes> : Plugin<Project> {
-
-	override fun apply(project: Project) {
-		val initializer = createInitializer(project)
-		initializer.initialize(project)
-	}
-
-	abstract fun createInitializer(project: Project): PluginInitializer<T>
+	fun initialize(attributes: T)
 }

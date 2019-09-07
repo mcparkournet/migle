@@ -22,28 +22,19 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle.attribute
+package net.mcparkour.migle
 
-import com.fasterxml.jackson.annotation.JsonProperty
-import net.mcparkour.migle.ProjectAttributes
+import net.mcparkour.migle.attributes.VelocityAttributes
+import org.gradle.api.Project
 
-data class PluginAttributes(
-	var main: String? = null,
-	override var name: String? = null,
-	override var version: String? = null,
-	override var description: String? = null,
-	@JsonProperty("api-version")
-	var apiVersion: ApiVersionAttribute? = null,
-	var load: LoadAttribute? = null,
-	var author: String? = null,
-	var authors: List<String>? = null,
-	var website: String? = null,
-	var depend: List<String>? = null,
-	var prefix: String? = null,
-	@JsonProperty("softdepend")
-	var softDepend: List<String>? = null,
-	@JsonProperty("loadbefore")
-	var loadBefore: List<String>? = null,
-	var commands: Map<String, CommandAttributes>? = null,
-	var permissions: Map<String, PermissionAttributes>? = null
-) : ProjectAttributes
+class VelocityMiglePlugin : MiglePlugin<VelocityAttributes>() {
+
+	override fun createInitializer(project: Project): PluginInitializer<VelocityAttributes> {
+		val attributesWriter = JsonAttributesWriter()
+		val attributesFile = AttributesFile("velocity-plugin.json", attributesWriter)
+		val attributes = VelocityAttributes()
+		val attributesInitializer = VelocityAttributesInitializer(project)
+		return PluginInitializer("Velocity", attributesFile, attributes, attributesInitializer)
+	}
+}
+

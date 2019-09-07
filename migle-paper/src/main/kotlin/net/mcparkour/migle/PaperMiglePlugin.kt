@@ -24,16 +24,16 @@
 
 package net.mcparkour.migle
 
-import net.mcparkour.migle.attributes.Attributes
-import org.gradle.api.Plugin
+import net.mcparkour.migle.attributes.PaperAttributes
 import org.gradle.api.Project
 
-abstract class MiglePlugin<T : Attributes> : Plugin<Project> {
+class PaperMiglePlugin : MiglePlugin<PaperAttributes>() {
 
-	override fun apply(project: Project) {
-		val initializer = createInitializer(project)
-		initializer.initialize(project)
+	override fun createInitializer(project: Project): PluginInitializer<PaperAttributes> {
+		val attributesWriter = YamlAttributesWriter()
+		val attributesFile = AttributesFile("plugin.yml", attributesWriter)
+		val attributes = PaperAttributes()
+		val attributesInitializer = PaperAttributesInitializer(project)
+		return PluginInitializer("Paper", attributesFile, attributes, attributesInitializer)
 	}
-
-	abstract fun createInitializer(project: Project): PluginInitializer<T>
 }

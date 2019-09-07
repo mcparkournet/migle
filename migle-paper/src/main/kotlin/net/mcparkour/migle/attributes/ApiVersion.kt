@@ -22,18 +22,14 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle
+package net.mcparkour.migle.attributes
 
-import net.mcparkour.migle.attributes.Attributes
-import org.gradle.api.Plugin
-import org.gradle.api.Project
+import com.fasterxml.jackson.annotation.JsonProperty
 
-abstract class MiglePlugin<T : Attributes> : Plugin<Project> {
+enum class ApiVersion {
 
-	override fun apply(project: Project) {
-		val initializer = createInitializer(project)
-		initializer.initialize(project)
-	}
-
-	abstract fun createInitializer(project: Project): PluginInitializer<T>
+	@JsonProperty("1.13")
+	VERSION_1_13,
+	@JsonProperty("1.14")
+	VERSION_1_14
 }

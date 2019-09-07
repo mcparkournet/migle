@@ -22,25 +22,14 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle
+package net.mcparkour.migle.attributes
 
-import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import net.mcparkour.migle.attribute.PluginAttributes
-import org.gradle.api.Project
-
-class MigleWaterfallPlugin : MiglePlugin() {
-
-	override fun apply(project: Project) {
-		val attributes = PluginAttributes()
-		val mapper = createMapper()
-		PluginInitializer(project, attributes, mapper, "Waterfall", "plugin.yml")
-	}
-
-	private fun createMapper() = YAMLMapper()
-		.disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
-		.setSerializationInclusion(JsonInclude.Include.NON_NULL)
-		.registerKotlinModule()
-}
+data class WaterfallAttributes(
+	var main: String? = null,
+	var name: String? = null,
+	var version: String? = null,
+	var description: String? = null,
+	var author: String? = null,
+	var depends: List<String>? = null,
+	var softDepends: List<String>? = null
+) : Attributes

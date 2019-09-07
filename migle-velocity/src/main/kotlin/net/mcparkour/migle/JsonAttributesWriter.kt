@@ -24,16 +24,19 @@
 
 package net.mcparkour.migle
 
-import net.mcparkour.migle.attributes.Attributes
-import org.gradle.api.Plugin
-import org.gradle.api.Project
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import java.io.File
+import java.io.Serializable
 
-abstract class MiglePlugin<T : Attributes> : Plugin<Project> {
+class JsonAttributesWriter : AttributesWriter {
 
-	override fun apply(project: Project) {
-		val initializer = createInitializer(project)
-		initializer.initialize(project)
+	private val mapper = ObjectMapper()
+		.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+		.registerKotlinModule()
+
+	override fun write(file: File, attributes: Serializable) {
+		mapper.writeValue(file, attributes)
 	}
-
-	abstract fun createInitializer(project: Project): PluginInitializer<T>
 }

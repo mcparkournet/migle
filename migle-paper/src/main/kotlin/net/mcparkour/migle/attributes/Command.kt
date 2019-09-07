@@ -22,16 +22,16 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle.attribute
+package net.mcparkour.migle.attributes
 
-import net.mcparkour.migle.ProjectAttributes
+import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 
-data class PluginAttributes(
-	var main: String? = null,
-	override var name: String? = null,
-	override var version: String? = null,
-	override var description: String? = null,
-	var author: String? = null,
-	var depends: List<String>? = null,
-	var softDepends: List<String>? = null
-) : ProjectAttributes
+data class Command(
+	var description: String? = null,
+	var aliases: List<String>? = null,
+	var permission: String? = null,
+	@JsonProperty("permission-message")
+	var permissionMessage: String? = null,
+	var usage: String? = null
+) : Serializable

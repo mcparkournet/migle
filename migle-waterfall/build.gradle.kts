@@ -1,16 +1,21 @@
-dependencies {
-	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.9")
-	compileOnly(project(":migle-core"))
+plugins {
+	`java-gradle-plugin`
+	id("com.gradle.plugin-publish")
 }
 
-@Suppress("UnstableApiUsage")
+dependencies {
+	compileOnly(project(":migle-core"))
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9")
+	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.9")
+}
+
 gradlePlugin {
 	plugins {
 		create("migle-waterfall") {
 			id = "net.mcparkour.migle.migle-waterfall"
 			displayName = "MigleWaterfall"
 			description = "Waterfall plugin Gradle plugin"
-			implementationClass = "net.mcparkour.migle.MigleWaterfallPlugin"
+			implementationClass = "net.mcparkour.migle.WaterfallMiglePlugin"
 		}
 	}
 }

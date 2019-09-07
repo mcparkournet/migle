@@ -24,16 +24,14 @@
 
 package net.mcparkour.migle
 
-import net.mcparkour.migle.attributes.Attributes
-import org.gradle.api.Plugin
+import net.mcparkour.migle.attributes.WaterfallAttributes
 import org.gradle.api.Project
 
-abstract class MiglePlugin<T : Attributes> : Plugin<Project> {
+class WaterfallAttributesInitializer(private val project: Project) : AttributesInitializer<WaterfallAttributes> {
 
-	override fun apply(project: Project) {
-		val initializer = createInitializer(project)
-		initializer.initialize(project)
+	override fun initialize(attributes: WaterfallAttributes) {
+		attributes.name = project.name
+		attributes.version = project.version.toString()
+		attributes.description = project.description
 	}
-
-	abstract fun createInitializer(project: Project): PluginInitializer<T>
 }

@@ -24,23 +24,16 @@
 
 package net.mcparkour.migle
 
-import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import net.mcparkour.migle.attribute.PluginAttributes
+import net.mcparkour.migle.attributes.WaterfallAttributes
 import org.gradle.api.Project
 
-class MiglePaperPlugin : MiglePlugin() {
+class WaterfallMiglePlugin : MiglePlugin<WaterfallAttributes>() {
 
-	override fun apply(project: Project) {
-		val attributes = PluginAttributes()
-		val mapper = createMapper()
-		PluginInitializer(project, attributes, mapper, "Paper", "plugin.yml")
+	override fun createInitializer(project: Project): PluginInitializer<WaterfallAttributes> {
+		val attributesWriter = YamlAttributesWriter()
+		val attributesFile = AttributesFile("plugin.yml", attributesWriter)
+		val attributes = WaterfallAttributes()
+		val attributesInitializer = WaterfallAttributesInitializer(project)
+		return PluginInitializer("Waterfall", attributesFile, attributes, attributesInitializer)
 	}
-
-	private fun createMapper() = YAMLMapper()
-		.disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
-		.setSerializationInclusion(JsonInclude.Include.NON_NULL)
-		.registerKotlinModule()
 }

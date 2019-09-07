@@ -22,26 +22,27 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle
+package net.mcparkour.migle.attributes
 
-import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import net.mcparkour.migle.attribute.PluginAttributes
-import org.gradle.api.Project
+import com.fasterxml.jackson.annotation.JsonProperty
 
-class MigleVelocityPlugin : MiglePlugin() {
-
-	override fun apply(project: Project) {
-		val attributes = PluginAttributes()
-		val mapper = createMapper()
-		PluginInitializer(project, attributes, mapper, "Velocity", "velocity-plugin.json") {
-			it.id = it.name
-		}
-	}
-
-	private fun createMapper() = ObjectMapper()
-		.setSerializationInclusion(JsonInclude.Include.NON_NULL)
-		.registerKotlinModule()
-}
-
+data class PaperAttributes(
+	var main: String? = null,
+	var name: String? = null,
+	var version: String? = null,
+	var description: String? = null,
+	@JsonProperty("api-version")
+	var apiVersion: ApiVersion? = null,
+	var load: PluginLoad? = null,
+	var author: String? = null,
+	var authors: List<String>? = null,
+	var website: String? = null,
+	var depend: List<String>? = null,
+	var prefix: String? = null,
+	@JsonProperty("softdepend")
+	var softDepend: List<String>? = null,
+	@JsonProperty("loadbefore")
+	var loadBefore: List<String>? = null,
+	var commands: Map<String, Command>? = null,
+	var permissions: Map<String, Permission>? = null
+) : Attributes

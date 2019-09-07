@@ -1,15 +1,20 @@
-dependencies {
-	compileOnly(project(":migle-core"))
+plugins {
+	`java-gradle-plugin`
+	id("com.gradle.plugin-publish")
 }
 
-@Suppress("UnstableApiUsage")
+dependencies {
+	compileOnly(project(":migle-core"))
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9")
+}
+
 gradlePlugin {
 	plugins {
 		create("migle-velocity") {
 			id = "net.mcparkour.migle.migle-velocity"
 			displayName = "MigleVelocity"
 			description = "Velocity plugin Gradle plugin"
-			implementationClass = "net.mcparkour.migle.MigleVelocityPlugin"
+			implementationClass = "net.mcparkour.migle.VelocityMiglePlugin"
 		}
 	}
 }

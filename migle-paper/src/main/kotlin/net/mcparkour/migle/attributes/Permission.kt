@@ -22,13 +22,12 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle.attribute
+package net.mcparkour.migle.attributes
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 
-enum class LoadAttribute {
-
-	STARTUP,
-	@JsonProperty("POSTWORLD")
-	POST_WORLD;
-}
+data class Permission(
+	var description: String? = null,
+	var default: PermissionDefault? = null,
+	var children: Map<String, Boolean>? = null
+) : Serializable

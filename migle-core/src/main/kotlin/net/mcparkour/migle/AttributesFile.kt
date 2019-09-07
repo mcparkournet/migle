@@ -22,12 +22,21 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle.attribute
+package net.mcparkour.migle
 
+import java.io.File
 import java.io.Serializable
 
-data class PermissionAttributes(
-	var description: String? = null,
-	var default: DefaultAttribute? = null,
-	var children: Map<String, Boolean>? = null
-) : Serializable
+class AttributesFile(
+	private val name: String,
+	private val writer: AttributesWriter
+) {
+
+	fun getFile(directory: File): File {
+		return File(directory, name)
+	}
+
+	fun write(file: File, attributes: Serializable) {
+		writer.write(file, attributes)
+	}
+}

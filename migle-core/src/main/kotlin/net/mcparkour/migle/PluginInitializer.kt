@@ -24,58 +24,50 @@
 
 package net.mcparkour.migle
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import org.gradle.api.Project
+import org.gradle.api.Task
 import org.gradle.api.plugins.ExtensionContainer
 import org.gradle.api.tasks.TaskContainer
+import org.gradle.api.tasks.TaskProvider
 import org.gradle.kotlin.dsl.withType
 import org.gradle.language.jvm.tasks.ProcessResources
-import java.io.File
+import java.io.Serializable
 
-class PluginInitializer<T : ProjectAttributes>(
-	project: Project,
-	private val attributes: T,
-	private val mapper: ObjectMapper,
+class PluginInitializer<T : Serializable>(
 	private val moduleName: String,
-	private val fileName: String,
-	private val attributesApplier: ((T) -> Unit)? = null
+	private val attributesFile: AttributesFile,
+	private val attributes: T,
+	private val attributesInitializer: AttributesInitializer<T>
 ) {
 
-	init {
-		project.initialize()
+	fun initialize(project: Project) {
+		initializeAttributes()
+		initializeExtensionContainer(project.extensions)
+		initializeTaskContainer(project.tasks)
 	}
 
-	private fun Project.initialize() {
-		attributes.initialize(this)
-		attributesApplier?.let {
-			it(attributes)
-		}
-		extensions.initialize()
-		tasks.initialize()
+	private fun initializeAttributes() {
+		attributesInitializer.initialize(attributes)
 	}
 
-	private fun ProjectAttributes.initialize(project: Project) = apply {
-		name = project.name
-		version = project.version.toString()
-		description = project.description
+	private fun initializeExtensionContainer(extensions: ExtensionContainer) {
+		extensions.add("migle$moduleName", attributes)
 	}
 
-	private fun ExtensionContainer.initialize() {
-		add("migle$moduleName", attributes)
-	}
-
-	private fun TaskContainer.initialize() {
-		val generateFileTask = createGenerateAttributesFileTask()
-		withType<ProcessResources> {
-			from(generateFileTask)
+	private fun initializeTaskContainer(tasks: TaskContainer) {
+		val task = createGenerateAttributesFileTask(tasks)
+		tasks.withType<ProcessResources> {
+			from(task)
 		}
 	}
 
-	private fun TaskContainer.createGenerateAttributesFileTask() = register("generate${moduleName}AttributesFile") {
-		val file = File(temporaryDir, fileName)
-		outputs.file(file)
-		doLast {
-			mapper.writeValue(file, attributes)
+	private fun createGenerateAttributesFileTask(tasks: TaskContainer): TaskProvider<Task> {
+		return tasks.register("generate${moduleName}AttributesFile") {
+			val file = attributesFile.getFile(temporaryDir)
+			outputs.file(file)
+			doLast {
+				attributesFile.write(file, attributes)
+			}
 		}
 	}
 }

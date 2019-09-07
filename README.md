@@ -15,7 +15,7 @@ Add the following block to Gradle build file:
 
 ```kotlin
 plugins {
-    id("net.mcparkour.migle.migle-paper") version "1.0.3"
+    id("net.mcparkour.migle.migle-paper") version "1.1.0"
 }
 ```
 
@@ -24,7 +24,7 @@ Then, add to plugin configuration attributes to set:
 ```kotlin
 miglePaper {
     main = "net.mcparkour.foo.FooPlugin"
-    apiVersion = ApiVersionAttribute.VERSION_1_14
+    apiVersion = ApiVersion.VERSION_1_14
     author = "MCParkour"
     website = "https://www.mcparkour.net/"
     depend = listOf("bar")

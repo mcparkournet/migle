@@ -22,11 +22,11 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle.attribute
+package net.mcparkour.migle.attributes
 
 import java.io.Serializable
 
-data class DependencyAttributes(
+data class Dependency(
 	var id: String? = null,
 	var optional: Boolean? = null
 ) : Serializable

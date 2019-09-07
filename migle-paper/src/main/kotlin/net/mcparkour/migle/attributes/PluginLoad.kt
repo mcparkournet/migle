@@ -22,13 +22,13 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle
+package net.mcparkour.migle.attributes
 
-import java.io.Serializable
+import com.fasterxml.jackson.annotation.JsonProperty
 
-interface ProjectAttributes : Serializable {
+enum class PluginLoad {
 
-	var name: String?
-	var version: String?
-	var description: String?
+	STARTUP,
+	@JsonProperty("POSTWORLD")
+	POST_WORLD;
 }
