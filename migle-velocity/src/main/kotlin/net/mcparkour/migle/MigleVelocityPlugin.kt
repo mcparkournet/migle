@@ -35,7 +35,9 @@ class MigleVelocityPlugin : MiglePlugin() {
 	override fun apply(project: Project) {
 		val attributes = PluginAttributes()
 		val mapper = createMapper()
-		PluginInitializer(project, attributes, mapper, "Velocity", "velocity-plugin.json")
+		PluginInitializer(project, attributes, mapper, "Velocity", "velocity-plugin.json") {
+			it.id = it.name
+		}
 	}
 
 	private fun createMapper() = ObjectMapper()

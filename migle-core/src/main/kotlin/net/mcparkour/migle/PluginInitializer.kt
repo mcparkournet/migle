@@ -32,12 +32,13 @@ import org.gradle.kotlin.dsl.withType
 import org.gradle.language.jvm.tasks.ProcessResources
 import java.io.File
 
-class PluginInitializer(
+class PluginInitializer<T : ProjectAttributes>(
 	project: Project,
-	private val attributes: ProjectAttributes,
+	private val attributes: T,
 	private val mapper: ObjectMapper,
 	private val moduleName: String,
-	private val fileName: String
+	private val fileName: String,
+	private val attributesApplier: ((T) -> Unit)? = null
 ) {
 
 	init {
@@ -46,6 +47,9 @@ class PluginInitializer(
 
 	private fun Project.initialize() {
 		attributes.initialize(this)
+		attributesApplier?.let {
+			it(attributes)
+		}
 		extensions.initialize()
 		tasks.initialize()
 	}
