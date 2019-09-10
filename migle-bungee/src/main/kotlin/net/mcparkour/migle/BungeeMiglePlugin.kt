@@ -24,16 +24,16 @@
 
 package net.mcparkour.migle
 
-import net.mcparkour.migle.attributes.WaterfallAttributes
+import net.mcparkour.migle.attributes.BungeeAttributes
 import org.gradle.api.Project
 
-class WaterfallMiglePlugin : MiglePlugin<WaterfallAttributes>() {
+class BungeeMiglePlugin : MiglePlugin<BungeeAttributes>() {
 
-	override fun createInitializer(project: Project): PluginInitializer<WaterfallAttributes> {
+	override fun createInitializer(project: Project): PluginInitializer<BungeeAttributes> {
 		val attributesWriter = YamlAttributesWriter()
 		val attributesFile = AttributesFile("plugin.yml", attributesWriter)
-		val attributes = WaterfallAttributes()
-		val attributesInitializer = WaterfallAttributesInitializer(project)
-		return PluginInitializer("Waterfall", attributesFile, attributes, attributesInitializer)
+		val attributes = BungeeAttributes()
+		val attributesInitializer = BungeeAttributesInitializer(project)
+		return PluginInitializer("Bungee", attributesFile, attributes, attributesInitializer)
 	}
 }

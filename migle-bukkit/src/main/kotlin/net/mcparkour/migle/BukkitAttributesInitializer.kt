@@ -22,14 +22,16 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle.attributes
+package net.mcparkour.migle
 
-data class WaterfallAttributes(
-	var main: String? = null,
-	var name: String? = null,
-	var version: String? = null,
-	var description: String? = null,
-	var author: String? = null,
-	var depends: List<String>? = null,
-	var softDepends: List<String>? = null
-) : Attributes
+import net.mcparkour.migle.attributes.BukkitAttributes
+import org.gradle.api.Project
+
+class BukkitAttributesInitializer(private val project: Project) : AttributesInitializer<BukkitAttributes> {
+
+	override fun initialize(attributes: BukkitAttributes) {
+		attributes.name = project.name
+		attributes.version = project.version.toString()
+		attributes.description = project.description
+	}
+}

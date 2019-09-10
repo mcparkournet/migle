@@ -11,11 +11,11 @@ dependencies {
 
 gradlePlugin {
 	plugins {
-		create("migle-paper") {
-			id = "net.mcparkour.migle.migle-paper"
-			displayName = "MiglePaper"
-			description = "Paper plugin Gradle plugin"
-			implementationClass = "net.mcparkour.migle.PaperMiglePlugin"
+		create("migle-bukkit") {
+			id = "net.mcparkour.migle.migle-bukkit"
+			displayName = "MigleBukkit"
+			description = "Bukkit plugin Gradle plugin"
+			implementationClass = "net.mcparkour.migle.BukkitMiglePlugin"
 		}
 	}
 }
@@ -23,7 +23,7 @@ gradlePlugin {
 pluginBundle {
 	website = "https://github.com/mcparkournet/migle"
 	vcsUrl = "https://github.com/mcparkournet/migle.git"
-	tags = listOf("paper")
+	tags = listOf("bukkit", "spigot", "paper")
 }
 
 tasks.jar {

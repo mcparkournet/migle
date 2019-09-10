@@ -2,12 +2,9 @@
 
 Migle is a Gradle plugin, which generates Minecraft plugin attributes file, based on Gradle build file configuration. Currently, it supports following plugin types:
 
-* [Paper](https://github.com/PaperMC/Paper)
-  * [Gradle plugin](https://plugins.gradle.org/plugin/net.mcparkour.migle.migle-paper)
-* [Velocity](https://github.com/VelocityPowered/Velocity)
-  * [Gradle plugin](https://plugins.gradle.org/plugin/net.mcparkour.migle.migle-velocity)
-* [Waterfall](https://github.com/PaperMC/Waterfall)
-  * [Gradle plugin](https://plugins.gradle.org/plugin/net.mcparkour.migle.migle-waterfall)
+* [Bukkit](https://plugins.gradle.org/plugin/net.mcparkour.migle.migle-bukkit)
+* [Bungee](https://plugins.gradle.org/plugin/net.mcparkour.migle.migle-bungee)
+* [Velocity](https://plugins.gradle.org/plugin/net.mcparkour.migle.migle-velocity)
 
 ## Usage
 
@@ -15,14 +12,14 @@ Add the following block to Gradle build file:
 
 ```kotlin
 plugins {
-    id("net.mcparkour.migle.migle-paper") version "1.1.0"
+    id("net.mcparkour.migle.migle-bukkit") version "1.1.0"
 }
 ```
 
 Then, add to plugin configuration attributes to set:
 
 ```kotlin
-miglePaper {
+migleBukkit {
     main = "net.mcparkour.foo.FooPlugin"
     apiVersion = ApiVersion.VERSION_1_14
     author = "MCParkour"

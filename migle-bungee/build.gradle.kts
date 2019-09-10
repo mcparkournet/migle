@@ -11,11 +11,11 @@ dependencies {
 
 gradlePlugin {
 	plugins {
-		create("migle-waterfall") {
-			id = "net.mcparkour.migle.migle-waterfall"
-			displayName = "MigleWaterfall"
-			description = "Waterfall plugin Gradle plugin"
-			implementationClass = "net.mcparkour.migle.WaterfallMiglePlugin"
+		create("migle-bungee") {
+			id = "net.mcparkour.migle.migle-bungee"
+			displayName = "MigleBungee"
+			description = "Bungee plugin Gradle plugin"
+			implementationClass = "net.mcparkour.migle.BungeeMiglePlugin"
 		}
 	}
 }
@@ -23,7 +23,7 @@ gradlePlugin {
 pluginBundle {
 	website = "https://github.com/mcparkournet/migle"
 	vcsUrl = "https://github.com/mcparkournet/migle.git"
-	tags = listOf("waterfall")
+	tags = listOf("bungee", "bungeecord", "waterfall")
 }
 
 tasks.jar {

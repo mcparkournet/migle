@@ -22,16 +22,14 @@
  * SOFTWARE.
  */
 
-package net.mcparkour.migle
+package net.mcparkour.migle.attributes
 
-import net.mcparkour.migle.attributes.WaterfallAttributes
-import org.gradle.api.Project
-
-class WaterfallAttributesInitializer(private val project: Project) : AttributesInitializer<WaterfallAttributes> {
-
-	override fun initialize(attributes: WaterfallAttributes) {
-		attributes.name = project.name
-		attributes.version = project.version.toString()
-		attributes.description = project.description
-	}
-}
+data class BungeeAttributes(
+	var main: String? = null,
+	var name: String? = null,
+	var version: String? = null,
+	var description: String? = null,
+	var author: String? = null,
+	var depends: List<String>? = null,
+	var softDepends: List<String>? = null
+) : Attributes

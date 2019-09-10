@@ -24,12 +24,12 @@
 
 package net.mcparkour.migle
 
-import net.mcparkour.migle.attributes.PaperAttributes
+import net.mcparkour.migle.attributes.BungeeAttributes
 import org.gradle.api.Project
 
-class PaperAttributesInitializer(private val project: Project) : AttributesInitializer<PaperAttributes> {
+class BungeeAttributesInitializer(private val project: Project) : AttributesInitializer<BungeeAttributes> {
 
-	override fun initialize(attributes: PaperAttributes) {
+	override fun initialize(attributes: BungeeAttributes) {
 		attributes.name = project.name
 		attributes.version = project.version.toString()
 		attributes.description = project.description

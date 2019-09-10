@@ -26,7 +26,7 @@ package net.mcparkour.migle.attributes
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class PaperAttributes(
+data class BukkitAttributes(
 	var main: String? = null,
 	var name: String? = null,
 	var version: String? = null,
