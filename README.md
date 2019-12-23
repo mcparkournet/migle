@@ -12,7 +12,7 @@ Add the following block to Gradle build file:
 
 ```kotlin
 plugins {
-    id("net.mcparkour.migle.migle-bukkit") version "1.1.0"
+    id("net.mcparkour.migle.migle-bukkit") version "1.1.1"
 }
 ```
 
@@ -21,7 +21,7 @@ Then, add to plugin configuration attributes to set:
 ```kotlin
 migleBukkit {
     main = "net.mcparkour.foo.FooPlugin"
-    apiVersion = ApiVersion.VERSION_1_14
+    apiVersion = ApiVersion.VERSION_1_15
     author = "MCParkour"
     website = "https://www.mcparkour.net/"
     depend = listOf("bar")
