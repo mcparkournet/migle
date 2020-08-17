@@ -54,6 +54,7 @@ class PluginInitializer<T : Serializable>(
         extensions.add("migle$moduleName", attributes)
     }
 
+    @Suppress("UnstableApiUsage")
     private fun initializeTaskContainer(tasks: TaskContainer) {
         val task = createGenerateAttributesFileTask(tasks)
         tasks.withType<ProcessResources> {
