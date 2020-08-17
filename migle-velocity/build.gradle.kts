@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
     compileOnly(project(":migle-core"))
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.10.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
 }
 
 gradlePlugin {

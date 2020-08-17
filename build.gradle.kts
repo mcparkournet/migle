@@ -1,7 +1,11 @@
 plugins {
     `kotlin-dsl-base`
     `java-gradle-plugin`
-    id("com.gradle.plugin-publish") version "0.10.1" apply false
+    id("com.gradle.plugin-publish") version "0.12.0" apply false
+}
+
+repositories {
+    jcenter()
 }
 
 subprojects {
