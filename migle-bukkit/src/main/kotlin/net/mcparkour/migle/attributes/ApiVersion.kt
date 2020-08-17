@@ -35,5 +35,8 @@ enum class ApiVersion {
     VERSION_1_14,
 
     @JsonProperty("1.15")
-    VERSION_1_15
+    VERSION_1_15,
+
+    @JsonProperty("1.16")
+    VERSION_1_16
 }
