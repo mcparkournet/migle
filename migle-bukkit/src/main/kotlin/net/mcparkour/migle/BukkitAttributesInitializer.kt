@@ -29,9 +29,9 @@ import org.gradle.api.Project
 
 class BukkitAttributesInitializer(private val project: Project) : AttributesInitializer<BukkitAttributes> {
 
-	override fun initialize(attributes: BukkitAttributes) {
-		attributes.name = project.name
-		attributes.version = project.version.toString()
-		attributes.description = project.description
-	}
+    override fun initialize(attributes: BukkitAttributes) {
+        attributes.name = project.name
+        attributes.version = project.version.toString()
+        attributes.description = project.description
+    }
 }

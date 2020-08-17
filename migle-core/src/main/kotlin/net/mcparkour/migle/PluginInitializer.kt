@@ -34,40 +34,40 @@ import org.gradle.language.jvm.tasks.ProcessResources
 import java.io.Serializable
 
 class PluginInitializer<T : Serializable>(
-	private val moduleName: String,
-	private val attributesFile: AttributesFile,
-	private val attributes: T,
-	private val attributesInitializer: AttributesInitializer<T>
+    private val moduleName: String,
+    private val attributesFile: AttributesFile,
+    private val attributes: T,
+    private val attributesInitializer: AttributesInitializer<T>
 ) {
 
-	fun initialize(project: Project) {
-		initializeAttributes()
-		initializeExtensionContainer(project.extensions)
-		initializeTaskContainer(project.tasks)
-	}
+    fun initialize(project: Project) {
+        initializeAttributes()
+        initializeExtensionContainer(project.extensions)
+        initializeTaskContainer(project.tasks)
+    }
 
-	private fun initializeAttributes() {
-		attributesInitializer.initialize(attributes)
-	}
+    private fun initializeAttributes() {
+        attributesInitializer.initialize(attributes)
+    }
 
-	private fun initializeExtensionContainer(extensions: ExtensionContainer) {
-		extensions.add("migle$moduleName", attributes)
-	}
+    private fun initializeExtensionContainer(extensions: ExtensionContainer) {
+        extensions.add("migle$moduleName", attributes)
+    }
 
-	private fun initializeTaskContainer(tasks: TaskContainer) {
-		val task = createGenerateAttributesFileTask(tasks)
-		tasks.withType<ProcessResources> {
-			from(task)
-		}
-	}
+    private fun initializeTaskContainer(tasks: TaskContainer) {
+        val task = createGenerateAttributesFileTask(tasks)
+        tasks.withType<ProcessResources> {
+            from(task)
+        }
+    }
 
-	private fun createGenerateAttributesFileTask(tasks: TaskContainer): TaskProvider<Task> {
-		return tasks.register("generate${moduleName}AttributesFile") {
-			val file = attributesFile.getFile(temporaryDir)
-			outputs.file(file)
-			doLast {
-				attributesFile.write(file, attributes)
-			}
-		}
-	}
+    private fun createGenerateAttributesFileTask(tasks: TaskContainer): TaskProvider<Task> {
+        return tasks.register("generate${moduleName}AttributesFile") {
+            val file = attributesFile.getFile(temporaryDir)
+            outputs.file(file)
+            doLast {
+                attributesFile.write(file, attributes)
+            }
+        }
+    }
 }

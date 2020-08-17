@@ -33,12 +33,12 @@ import java.io.Serializable
 
 class YamlAttributesWriter : AttributesWriter {
 
-	private val mapper = YAMLMapper()
-		.disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
-		.setSerializationInclusion(JsonInclude.Include.NON_NULL)
-		.registerKotlinModule()
+    private val mapper = YAMLMapper()
+        .disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
+        .setSerializationInclusion(JsonInclude.Include.NON_NULL)
+        .registerKotlinModule()
 
-	override fun write(file: File, attributes: Serializable) {
-		mapper.writeValue(file, attributes)
-	}
+    override fun write(file: File, attributes: Serializable) {
+        mapper.writeValue(file, attributes)
+    }
 }

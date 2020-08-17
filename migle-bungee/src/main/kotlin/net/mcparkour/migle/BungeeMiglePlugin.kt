@@ -29,11 +29,11 @@ import org.gradle.api.Project
 
 class BungeeMiglePlugin : MiglePlugin<BungeeAttributes>() {
 
-	override fun createInitializer(project: Project): PluginInitializer<BungeeAttributes> {
-		val attributesWriter = YamlAttributesWriter()
-		val attributesFile = AttributesFile("plugin.yml", attributesWriter)
-		val attributes = BungeeAttributes()
-		val attributesInitializer = BungeeAttributesInitializer(project)
-		return PluginInitializer("Bungee", attributesFile, attributes, attributesInitializer)
-	}
+    override fun createInitializer(project: Project): PluginInitializer<BungeeAttributes> {
+        val attributesWriter = YamlAttributesWriter()
+        val attributesFile = AttributesFile("plugin.yml", attributesWriter)
+        val attributes = BungeeAttributes()
+        val attributesInitializer = BungeeAttributesInitializer(project)
+        return PluginInitializer("Bungee", attributesFile, attributes, attributesInitializer)
+    }
 }

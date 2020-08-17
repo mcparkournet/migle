@@ -29,5 +29,5 @@ import java.io.Serializable
 
 interface AttributesWriter {
 
-	fun write(file: File, attributes: Serializable)
+    fun write(file: File, attributes: Serializable)
 }

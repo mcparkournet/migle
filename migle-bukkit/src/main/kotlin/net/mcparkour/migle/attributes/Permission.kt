@@ -27,7 +27,7 @@ package net.mcparkour.migle.attributes
 import java.io.Serializable
 
 data class Permission(
-	var description: String? = null,
-	var default: PermissionDefault? = null,
-	var children: Map<String, Boolean>? = null
+    var description: String? = null,
+    var default: PermissionDefault? = null,
+    var children: Map<String, Boolean>? = null
 ) : Serializable

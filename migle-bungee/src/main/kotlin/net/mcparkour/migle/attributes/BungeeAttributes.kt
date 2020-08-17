@@ -25,11 +25,11 @@
 package net.mcparkour.migle.attributes
 
 data class BungeeAttributes(
-	var main: String? = null,
-	var name: String? = null,
-	var version: String? = null,
-	var description: String? = null,
-	var author: String? = null,
-	var depends: List<String>? = null,
-	var softDepends: List<String>? = null
+    var main: String? = null,
+    var name: String? = null,
+    var version: String? = null,
+    var description: String? = null,
+    var author: String? = null,
+    var depends: List<String>? = null,
+    var softDepends: List<String>? = null
 ) : Attributes

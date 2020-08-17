@@ -25,12 +25,12 @@
 package net.mcparkour.migle.attributes
 
 data class VelocityAttributes(
-	var id: String? = null,
-	var name: String? = null,
-	var version: String? = null,
-	var description: String? = null,
-	var url: String? = null,
-	var authors: List<String>? = null,
-	var dependencies: List<Dependency>? = null,
-	var main: String? = null
+    var id: String? = null,
+    var name: String? = null,
+    var version: String? = null,
+    var description: String? = null,
+    var url: String? = null,
+    var authors: List<String>? = null,
+    var dependencies: List<Dependency>? = null,
+    var main: String? = null
 ) : Attributes

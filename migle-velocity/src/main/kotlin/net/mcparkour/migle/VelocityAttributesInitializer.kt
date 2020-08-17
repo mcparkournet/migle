@@ -29,10 +29,10 @@ import org.gradle.api.Project
 
 class VelocityAttributesInitializer(private val project: Project) : AttributesInitializer<VelocityAttributes> {
 
-	override fun initialize(attributes: VelocityAttributes) {
-		attributes.id = project.name
-		attributes.name = project.name
-		attributes.version = project.version.toString()
-		attributes.description = project.description
-	}
+    override fun initialize(attributes: VelocityAttributes) {
+        attributes.id = project.name
+        attributes.name = project.name
+        attributes.version = project.version.toString()
+        attributes.description = project.description
+    }
 }

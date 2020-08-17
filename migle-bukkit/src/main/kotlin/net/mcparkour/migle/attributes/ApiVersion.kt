@@ -28,10 +28,12 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 enum class ApiVersion {
 
-	@JsonProperty("1.13")
-	VERSION_1_13,
-	@JsonProperty("1.14")
-	VERSION_1_14,
-	@JsonProperty("1.15")
-	VERSION_1_15
+    @JsonProperty("1.13")
+    VERSION_1_13,
+
+    @JsonProperty("1.14")
+    VERSION_1_14,
+
+    @JsonProperty("1.15")
+    VERSION_1_15
 }

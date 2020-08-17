@@ -29,12 +29,12 @@ import org.gradle.api.Project
 
 class VelocityMiglePlugin : MiglePlugin<VelocityAttributes>() {
 
-	override fun createInitializer(project: Project): PluginInitializer<VelocityAttributes> {
-		val attributesWriter = JsonAttributesWriter()
-		val attributesFile = AttributesFile("velocity-plugin.json", attributesWriter)
-		val attributes = VelocityAttributes()
-		val attributesInitializer = VelocityAttributesInitializer(project)
-		return PluginInitializer("Velocity", attributesFile, attributes, attributesInitializer)
-	}
+    override fun createInitializer(project: Project): PluginInitializer<VelocityAttributes> {
+        val attributesWriter = JsonAttributesWriter()
+        val attributesFile = AttributesFile("velocity-plugin.json", attributesWriter)
+        val attributes = VelocityAttributes()
+        val attributesInitializer = VelocityAttributesInitializer(project)
+        return PluginInitializer("Velocity", attributesFile, attributes, attributesInitializer)
+    }
 }
 

@@ -30,10 +30,10 @@ import org.gradle.api.Project
 
 abstract class MiglePlugin<T : Attributes> : Plugin<Project> {
 
-	override fun apply(project: Project) {
-		val initializer = createInitializer(project)
-		initializer.initialize(project)
-	}
+    override fun apply(project: Project) {
+        val initializer = createInitializer(project)
+        initializer.initialize(project)
+    }
 
-	abstract fun createInitializer(project: Project): PluginInitializer<T>
+    abstract fun createInitializer(project: Project): PluginInitializer<T>
 }

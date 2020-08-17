@@ -28,15 +28,15 @@ import java.io.File
 import java.io.Serializable
 
 class AttributesFile(
-	private val name: String,
-	private val writer: AttributesWriter
+    private val name: String,
+    private val writer: AttributesWriter
 ) {
 
-	fun getFile(directory: File): File {
-		return File(directory, name)
-	}
+    fun getFile(directory: File): File {
+        return File(directory, name)
+    }
 
-	fun write(file: File, attributes: Serializable) {
-		writer.write(file, attributes)
-	}
+    fun write(file: File, attributes: Serializable) {
+        writer.write(file, attributes)
+    }
 }

@@ -32,11 +32,11 @@ import java.io.Serializable
 
 class JsonAttributesWriter : AttributesWriter {
 
-	private val mapper = ObjectMapper()
-		.setSerializationInclusion(JsonInclude.Include.NON_NULL)
-		.registerKotlinModule()
+    private val mapper = ObjectMapper()
+        .setSerializationInclusion(JsonInclude.Include.NON_NULL)
+        .registerKotlinModule()
 
-	override fun write(file: File, attributes: Serializable) {
-		mapper.writeValue(file, attributes)
-	}
+    override fun write(file: File, attributes: Serializable) {
+        mapper.writeValue(file, attributes)
+    }
 }

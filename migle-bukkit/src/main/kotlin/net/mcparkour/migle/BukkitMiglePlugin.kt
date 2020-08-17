@@ -29,11 +29,11 @@ import org.gradle.api.Project
 
 class BukkitMiglePlugin : MiglePlugin<BukkitAttributes>() {
 
-	override fun createInitializer(project: Project): PluginInitializer<BukkitAttributes> {
-		val attributesWriter = YamlAttributesWriter()
-		val attributesFile = AttributesFile("plugin.yml", attributesWriter)
-		val attributes = BukkitAttributes()
-		val attributesInitializer = BukkitAttributesInitializer(project)
-		return PluginInitializer("Bukkit", attributesFile, attributes, attributesInitializer)
-	}
+    override fun createInitializer(project: Project): PluginInitializer<BukkitAttributes> {
+        val attributesWriter = YamlAttributesWriter()
+        val attributesFile = AttributesFile("plugin.yml", attributesWriter)
+        val attributes = BukkitAttributes()
+        val attributesInitializer = BukkitAttributesInitializer(project)
+        return PluginInitializer("Bukkit", attributesFile, attributes, attributesInitializer)
+    }
 }

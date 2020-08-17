@@ -28,7 +28,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 enum class PluginLoad {
 
-	STARTUP,
-	@JsonProperty("POSTWORLD")
-	POST_WORLD;
+    STARTUP,
+
+    @JsonProperty("POSTWORLD")
+    POST_WORLD;
 }

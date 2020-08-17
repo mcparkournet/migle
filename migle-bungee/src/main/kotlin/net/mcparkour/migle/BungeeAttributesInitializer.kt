@@ -29,9 +29,9 @@ import org.gradle.api.Project
 
 class BungeeAttributesInitializer(private val project: Project) : AttributesInitializer<BungeeAttributes> {
 
-	override fun initialize(attributes: BungeeAttributes) {
-		attributes.name = project.name
-		attributes.version = project.version.toString()
-		attributes.description = project.description
-	}
+    override fun initialize(attributes: BungeeAttributes) {
+        attributes.name = project.name
+        attributes.version = project.version.toString()
+        attributes.description = project.description
+    }
 }

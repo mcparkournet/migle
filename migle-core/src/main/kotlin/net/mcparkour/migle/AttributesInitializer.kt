@@ -26,5 +26,5 @@ package net.mcparkour.migle
 
 interface AttributesInitializer<T> {
 
-	fun initialize(attributes: T)
+    fun initialize(attributes: T)
 }

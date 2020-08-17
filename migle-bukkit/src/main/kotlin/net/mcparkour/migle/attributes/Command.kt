@@ -28,10 +28,10 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 
 data class Command(
-	var description: String? = null,
-	var aliases: List<String>? = null,
-	var permission: String? = null,
-	@JsonProperty("permission-message")
-	var permissionMessage: String? = null,
-	var usage: String? = null
+    var description: String? = null,
+    var aliases: List<String>? = null,
+    var permission: String? = null,
+    @JsonProperty("permission-message")
+    var permissionMessage: String? = null,
+    var usage: String? = null
 ) : Serializable

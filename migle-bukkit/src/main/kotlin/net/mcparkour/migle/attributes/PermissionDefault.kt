@@ -28,12 +28,15 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 enum class PermissionDefault {
 
-	@JsonProperty("true")
-	TRUE,
-	@JsonProperty("false")
-	FALSE,
-	@JsonProperty("op")
-	OP,
-	@JsonProperty("not op")
-	NOT_OP
+    @JsonProperty("true")
+    TRUE,
+
+    @JsonProperty("false")
+    FALSE,
+
+    @JsonProperty("op")
+    OP,
+
+    @JsonProperty("not op")
+    NOT_OP
 }
